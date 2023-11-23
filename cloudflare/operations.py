@@ -3,9 +3,11 @@
   All rights reserved.
   FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
   Copyright end """
+import json
+
 import requests
 from connectors.core.connector import get_logger, ConnectorError
-import json
+
 logger = get_logger('cloudflare')
 
 
@@ -18,16 +20,16 @@ class Cloudflare(object):
         self.email_id = config.get('email_id')
         self.api_key = config.get('global_api_key')
         self.headers = {
-                "X-Auth-Email": self.email_id,
-                "X-Auth-Key": self.api_key,
-                "Content-Type": "application/json"
-            }
+            "X-Auth-Email": self.email_id,
+            "X-Auth-Key": self.api_key,
+            "Content-Type": "application/json"
+        }
         if not self.server_url.startswith('https://'):
             self.server_url = 'https://{0}/'.format(self.server_url)
 
     def make_api_call(self, endpoint=None, method='GET', headers=None, health_check=False, data=None):
         url = self.server_url + endpoint
-        logger.debug('Final url to make rest call is: {0}'.format(url))
+        logger.debug('API Service URL: {0}'.format(url))
         if headers:
             self.headers.update(headers)
         try:
@@ -56,19 +58,19 @@ class Cloudflare(object):
             raise ConnectorError(str(e))
 
 
-def get_list_of_block_ip_in_firewall_rule_list(config, params):
+def get_firewall_rules(config, params):
     """
         Retrieve list of all block ips in firewall rule sets.
         :param config: config
         :param params: params
-        :return: List of all details,all block ips in firewall rule sets.
+        :return: List of all details,all block ips in firewall rules.
     """
     obj = Cloudflare(config)
     endpoint = '/client/v4/zones/{0}/firewall/rules'.format(config.get('zone_id'))
     return obj.make_api_call(endpoint, 'GET')
 
 
-def get_list_firewall_rule_list(config, params):
+def get_firewall_rule_set(config, params):
     """
        Retrieve list of firewall rule sets.
        :param config: config
@@ -95,11 +97,10 @@ def get_rule_id_by_rule_name(config, params):
         for rule in data['result']:
             if rule['name'] == params.get('ruleset_name'):
                 rule_id = rule['id']
-                return {'Rule ID': rule_id, 'Rule Name': params.get('ruleset_name')}
-                break
+                return {'rule_id': rule_id, 'rule_name': params.get('ruleset_name')}
 
 
-def block_ip_in_firewall(config, params):
+def block_ip(config, params):
     """
        Retrieve block IP in details Cloudflare WAF.
       :param config: config
@@ -117,7 +118,7 @@ def block_ip_in_firewall(config, params):
     return obj.make_api_call(endpoint, 'POST', data=json.dumps(payload))
 
 
-def unblock_ip_in_firewall(config, params):
+def unblock_ip(config, params):
     """
        Retrieve unblock IP in details Cloudflare WAF.
       :param config: config
@@ -136,7 +137,7 @@ def unblock_ip_in_firewall(config, params):
                 break
         if rule_id_to_delete is not None:
             delete_endpoint = '/client/v4/zones/{0}/firewall/rules/{1}'.format(config.get('zone_id'), rule_id_to_delete)
-            return  obj.make_api_call(delete_endpoint, 'DELETE')
+            return obj.make_api_call(delete_endpoint, 'DELETE')
 
 
 def _check_health(config):
@@ -151,9 +152,9 @@ def _check_health(config):
 
 
 operations = {
-    'get_list_of_block_ip_in_firewall_rule_list': get_list_of_block_ip_in_firewall_rule_list,
-    'get_list_firewall_rule_list': get_list_firewall_rule_list,
-    'block_ip_in_firewall': block_ip_in_firewall,
-    'get_rule_id_by_rule_name':get_rule_id_by_rule_name,
-    'unblock_ip_in_firewall': unblock_ip_in_firewall
+    'get_firewall_rules': get_firewall_rules,
+    'get_firewall_rule_set': get_firewall_rule_set,
+    'block_ip': block_ip,
+    'get_rule_id_by_rule_name': get_rule_id_by_rule_name,
+    'unblock_ip': unblock_ip
 }

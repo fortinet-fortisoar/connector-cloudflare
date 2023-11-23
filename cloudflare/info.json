@@ -76,10 +76,10 @@
   },
   "operations": [
     {
-      "title": "Get List Of Block IPs In Firewall Rule List",
-      "operation": "get_list_of_block_ip_in_firewall_rule_list",
-      "description": "Retrieve list of all block ips in firewall rule sets.",
-      "annotation": "get_list_of_block_ip_in_firewall_rule_list",
+      "title": "Get Firewall Rules",
+      "operation": "get_firewall_rules",
+      "description": "Retrieve list of all firewall rules",
+      "annotation": "get_firewall_rules",
       "category": "investigation",
       "parameters": [],
       "output_schema": [
@@ -95,6 +95,33 @@
             "total_count": "",
             "total_pages": ""
           }
+        }
+      ]
+    },
+    {
+      "title": "Get Firewall Rule Sets",
+      "operation": "get_firewall_rule_set",
+      "description": "Retrieve list of firewall rule sets.",
+      "annotation": "get_firewall_rule_set",
+      "category": "investigation",
+      "parameters": [],
+      "output_schema": [
+        {
+          "result": [
+            {
+              "id": "",
+              "name": "",
+              "description": "",
+              "source": "",
+              "kind": "",
+              "version": "",
+              "last_updated": "",
+              "phase": ""
+            }
+          ],
+          "success": true,
+          "errors": [],
+          "messages": []
         }
       ]
     },
@@ -120,44 +147,17 @@
       ],
       "output_schema": [
         {
-          "Rule Name": "",
-          "Rule ID": ""
+          "rule_id": "",
+          "rule_name": ""
         }
       ]
     },
     {
-      "title": "Get List Firewall Rule List",
-      "operation": "get_list_firewall_rule_list",
-      "description": "Retrieve list of firewall rule sets.",
-      "annotation": "get_list_firewall_rule_list",
-      "category": "investigation",
-      "parameters": [],
-      "output_schema": [
-        {
-          "result": [
-            {
-              "id": "",
-              "name": "",
-              "description": "",
-              "source": "",
-              "kind": "",
-              "version": "",
-              "last_updated": "",
-              "phase": ""
-            }
-          ],
-          "success": true,
-          "errors": [],
-          "messages": []
-        }
-      ]
-    },
-    {
-      "title": "Block IP In Firewall",
-      "operation": "block_ip_in_firewall",
+      "title": "Block IP",
+      "operation": "block_ip",
       "description": "Block IP in Cloudflare WAF.",
-      "annotation": "block_ip_in_firewall",
-      "category": "investigation",
+      "annotation": "block_ip",
+      "category": "containment",
       "parameters": [
         {
           "title": "Ruleset ID",
@@ -225,11 +225,11 @@
       ]
     },
     {
-      "title": "Unblock IP In Firewall",
-      "operation": "unblock_ip_in_firewall",
+      "title": "Unblock IP",
+      "operation": "unblock_ip",
       "description": "Unblock IP in Cloudflare WAF.",
-      "annotation": "unblock_ip_in_firewall",
-      "category": "investigation",
+      "annotation": "unblock_ip",
+      "category": "remediation",
       "parameters": [
         {
           "title": "IP Address",
