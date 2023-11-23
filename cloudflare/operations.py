@@ -64,6 +64,7 @@ def get_firewall_rules(config, params):
         :param config: config
         :param params: params
         :return: List of all details,all block ips in firewall rules.
+        referred this api doc link: https://developers.cloudflare.com/api/operations/firewall-rules-list-firewall-rules
     """
     obj = Cloudflare(config)
     endpoint = '/client/v4/zones/{0}/firewall/rules'.format(config.get('zone_id'))
@@ -76,6 +77,7 @@ def get_firewall_rule_set(config, params):
        :param config: config
        :param params: params
        :return: List of all details,list of firewall rule sets.
+       referred this api doc link: https://developers.cloudflare.com/api/operations/listZoneRulesets
     """
     obj = Cloudflare(config)
     endpoint = '/client/v4/zones/{0}/rulesets'.format(config.get('zone_id'))
@@ -88,6 +90,7 @@ def get_rule_id_by_rule_name(config, params):
       :param config: config
       :param params: params
       :return: List of all details, rule id by passing rule name.
+      referred this api doc link: https://developers.cloudflare.com/api/operations/listZoneRulesets
     """
     obj = Cloudflare(config)
     endpoint = '/client/v4/zones/{0}/rulesets'.format(config.get('zone_id'))
@@ -106,6 +109,7 @@ def block_ip(config, params):
       :param config: config
       :param params: params
       :return: List of all details,block IP in details Cloudflare WAF
+      referred this api doc link: https://developers.cloudflare.com/api/operations/createZoneRuleset
     """
     obj = Cloudflare(config)
     endpoint = '/client/v4/zones/{0}/rulesets/{1}/rules'.format(config.get('zone_id'), params.get('ruleset_id'))
@@ -124,6 +128,7 @@ def unblock_ip(config, params):
       :param config: config
       :param params: params
       :return: List of all details,unblock IP in details Cloudflare WAF
+      referred this api doc link: https://developers.cloudflare.com/api/operations/deleteZoneRuleset
     """
     obj = Cloudflare(config)
     endpoint = '/client/v4/zones/{0}/firewall/rules'.format(config.get('zone_id'))
