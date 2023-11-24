@@ -18,7 +18,7 @@
           "collection": "/api/3/workflow_collections/8840bb3c-3c63-4316-82e5-e3d53366b0ef",
           "triggerLimit": null,
           "description": "Retrieve list of all block ips in firewall rule sets.",
-          "name": "Get List Of Block IPs In Firewall Rule List",
+          "name": "Get Firewall Rules",
           "tag": "#Cloudflare",
           "recordTags": [
             "Cloudflare"
@@ -38,7 +38,7 @@
               "status": null,
               "arguments": {
                 "route": "a16dd9bb-d62b-410a-ac85-f7c33dcf4917",
-                "title": "Cloudflare: Get List Of Block IPs In Firewall Rule List",
+                "title": "Cloudflare: Get Firewall Rules",
                 "resources": [
                   "alerts"
                 ],
@@ -59,7 +59,7 @@
             {
               "uuid": "b45131e5-3c3d-4d90-9abc-26df97737770",
               "@type": "WorkflowStep",
-              "name": "Get List Of Block IPs In Firewall Rule List",
+              "name": "Get Firewall Rules",
               "description": null,
               "status": null,
               "arguments": {
@@ -68,10 +68,9 @@
                 "params": [],
                 "version": "1.0.0",
                 "connector": "cloudflare",
-                "operation": "get_list_of_block_ip_in_firewall_rule_list",
-                "operationTitle": "Get List Of Block IPs In Firewall Rule List",
+                "operation": "get_firewall_rules",
+                "operationTitle": "Get Firewall Rules",
                 "step_variables": {
-                  "output_data": "{{vars.result}}"
                 }
               },
               "left": "188",
@@ -85,7 +84,7 @@
               "uuid": "7fbe0646-f0f8-4a05-8fcb-a5dfa5bc85f4",
               "label": null,
               "isExecuted": false,
-              "name": "Start-> Get List Of Block IPs In Firewall Rule List",
+              "name": "Start-> Get Firewall Rules",
               "sourceStep": "/api/3/workflow_steps/87098360-f0a9-408a-afa9-6ebdeb319b9c",
               "targetStep": "/api/3/workflow_steps/b45131e5-3c3d-4d90-9abc-26df97737770"
             }
@@ -152,7 +151,6 @@
                 "operation": "get_rule_id_by_rule_name",
                 "operationTitle": "Get Rule ID By Rule Name",
                 "step_variables": {
-                  "output_data": "{{vars.result}}"
                 }
               },
               "left": "188",
@@ -178,7 +176,7 @@
           "collection": "/api/3/workflow_collections/8840bb3c-3c63-4316-82e5-e3d53366b0ef",
           "triggerLimit": null,
           "description": "Retrieve list of firewall rule sets.",
-          "name": "Get List Firewall Rule List",
+          "name": "Get Firewall Rule Set",
           "tag": "#Cloudflare",
           "recordTags": [
             "Cloudflare"
@@ -198,7 +196,7 @@
               "status": null,
               "arguments": {
                 "route": "f79f65c7-491b-40da-9c09-1c9264bd7644",
-                "title": "Cloudflare: Get List Firewall Rule List",
+                "title": "Cloudflare: Get Firewall Rule Set",
                 "resources": [
                   "alerts"
                 ],
@@ -219,7 +217,7 @@
             {
               "uuid": "d7e70f9c-40e1-4447-8700-eaae42c32ace",
               "@type": "WorkflowStep",
-              "name": "Get List Firewall Rule List",
+              "name": "Get Firewall Rule Set",
               "description": null,
               "status": null,
               "arguments": {
@@ -228,10 +226,9 @@
                 "params": [],
                 "version": "1.0.0",
                 "connector": "cloudflare",
-                "operation": "get_list_firewall_rule_list",
-                "operationTitle": "Get List Firewall Rule List",
+                "operation": "get_firewall_rule_set",
+                "operationTitle": "Get Firewall Rule Set",
                 "step_variables": {
-                  "output_data": "{{vars.result}}"
                 }
               },
               "left": "188",
@@ -245,7 +242,7 @@
               "uuid": "2d0ecd7b-0d3c-4080-8d3f-8fab2785ee0b",
               "label": null,
               "isExecuted": false,
-              "name": "Start-> Get List Firewall Rule List",
+              "name": "Start-> Get Firewall Rule Set",
               "sourceStep": "/api/3/workflow_steps/7badc0d9-26ea-49df-84b2-4e61bafd1d1f",
               "targetStep": "/api/3/workflow_steps/d7e70f9c-40e1-4447-8700-eaae42c32ace"
             }
@@ -257,7 +254,7 @@
           "collection": "/api/3/workflow_collections/8840bb3c-3c63-4316-82e5-e3d53366b0ef",
           "triggerLimit": null,
           "description": "Block IP in Cloudflare WAF.",
-          "name": "Block IP In Firewall",
+          "name": "Block IP",
           "tag": "#Cloudflare",
           "recordTags": [
             "Cloudflare"
@@ -277,7 +274,7 @@
               "status": null,
               "arguments": {
                 "route": "c03336cd-5025-4ac7-b0e2-9d182a20eb56",
-                "title": "Cloudflare: Block IP In Firewall",
+                "title": "Cloudflare: Block IP",
                 "resources": [
                   "alerts"
                 ],
@@ -298,7 +295,7 @@
             {
               "uuid": "cd133017-7b4d-4b95-a4d9-41812a938bdf",
               "@type": "WorkflowStep",
-              "name": "Block IP In Firewall",
+              "name": "Block IP",
               "description": null,
               "status": null,
               "arguments": {
@@ -311,10 +308,9 @@
                 },
                 "version": "1.0.0",
                 "connector": "cloudflare",
-                "operation": "block_ip_in_firewall",
-                "operationTitle": "Block IP In Firewall",
+                "operation": "block_ip",
+                "operationTitle": "Block IP",
                 "step_variables": {
-                  "output_data": "{{vars.result}}"
                 }
               },
               "left": "188",
@@ -328,7 +324,7 @@
               "uuid": "a0e8cc82-879d-4bee-99dc-939e998b40a2",
               "label": null,
               "isExecuted": false,
-              "name": "Start-> Block IP In Firewall",
+              "name": "Start-> Block IP",
               "sourceStep": "/api/3/workflow_steps/625b63b6-c4d7-4983-a00e-e0a03124445c",
               "targetStep": "/api/3/workflow_steps/cd133017-7b4d-4b95-a4d9-41812a938bdf"
             }
@@ -340,7 +336,7 @@
           "collection": "/api/3/workflow_collections/8840bb3c-3c63-4316-82e5-e3d53366b0ef",
           "triggerLimit": null,
           "description": "Unblock IP in Cloudflare WAF.",
-          "name": "Unblock IP In Firewall",
+          "name": "UnBlock IP",
           "tag": "#Cloudflare",
           "recordTags": [
             "Cloudflare"
@@ -360,7 +356,7 @@
               "status": null,
               "arguments": {
                 "route": "6597d589-f929-49f9-a193-e1d8fbf7c05e",
-                "title": "Cloudflare: Unblock IP In Firewall",
+                "title": "Cloudflare: UnBlock IP",
                 "resources": [
                   "alerts"
                 ],
@@ -381,7 +377,7 @@
             {
               "uuid": "12ef2d38-0d09-4697-aaa6-5f54f8326c6d",
               "@type": "WorkflowStep",
-              "name": "Unblock IP In Firewall",
+              "name": "UnBlock IP",
               "description": null,
               "status": null,
               "arguments": {
@@ -392,10 +388,9 @@
                 },
                 "version": "1.0.0",
                 "connector": "cloudflare",
-                "operation": "unblock_ip_in_firewall",
-                "operationTitle": "Unblock IP In Firewall",
+                "operation": "unblock_ip",
+                "operationTitle": "UnBlock IP",
                 "step_variables": {
-                  "output_data": "{{vars.result}}"
                 }
               },
               "left": "188",
@@ -409,7 +404,7 @@
               "uuid": "a40a41e0-2a33-4594-abcb-9b2f96398bac",
               "label": null,
               "isExecuted": false,
-              "name": "Start-> Unblock IP In Firewall",
+              "name": "Start-> UnBlock IP",
               "sourceStep": "/api/3/workflow_steps/b197552c-9f0d-4b78-b326-57741f67048a",
               "targetStep": "/api/3/workflow_steps/12ef2d38-0d09-4697-aaa6-5f54f8326c6d"
             }
