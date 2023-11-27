@@ -21,7 +21,7 @@
         "required": true,
         "visible": true,
         "editable": true,
-        "value": "",
+        "value": "https://api.cloudflare.com",
         "placeholder": "e.g: https://api.cloudflare.com or api.cloudflare.com"
       },
       {
