@@ -9,7 +9,7 @@
   "cs_compatible": true,
   "cs_approved": false,
   "category": "Threat Intelligence",
-  "help_online": "https://github.com/jitesh-spryiq/connector-cloudflare/blob/develop/docs/CloudflareConnectorDoc.md",
+  "help_online": "https://github.com/fortinet-fortisoar/connector-cloudflare/blob/release/1.0.0/docs/CloudflareConnectorDoc.md",
   "configuration": {
     "fields": [
       {
